@@ -2,10 +2,13 @@
 import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { useCart } from '@/components/cart/CartContext'
+import { useFavorites } from '@/components/favorites/FavoritesContext'
 import { priceWithDiscount, type Product, type Category } from '@/lib/types'
 
 function ProductCard({ p }: { p: Product }) {
   const { add } = useCart()
+  const { toggle, isFavorite } = useFavorites()
+  const fav = isFavorite(p.id)
   const [idx, setIdx] = useState(0)
   const [size, setSize] = useState<string | undefined>(p.size_options?.[0]?.label)
   const [color, setColor] = useState<string | undefined>(p.color_options?.[0]?.label)
@@ -18,6 +21,13 @@ function ProductCard({ p }: { p: Product }) {
         {imgs[idx] ? <img src={imgs[idx]} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <span className="muted" style={{ fontSize: 13 }}>нема фото</span>}
         {hasDisc && <span className="badge" style={{ left: 10, background: '#ff6b6b', color: '#fff' }}>-{p.discount}%</span>}
         <span className="badge" style={{ right: 10, background: p.in_stock ? 'var(--accent)' : '#e2e4dd', color: '#1c1e18' }}>{p.in_stock ? 'В наявності' : 'Немає'}</span>
+        <button
+          onClick={() => toggle(p)}
+          aria-label={fav ? 'Видалити з вподобаного' : 'Додати в вподобане'}
+          style={{ position: 'absolute', bottom: 10, right: 10, width: 34, height: 34, borderRadius: '50%', background: '#fff', border: '1px solid var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: 'var(--shadow)' }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill={fav ? '#ff6b6b' : 'none'} stroke={fav ? '#ff6b6b' : 'currentColor'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+        </button>
         {imgs.length > 1 && (
           <div style={{ position: 'absolute', bottom: 8, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 6 }}>
             {imgs.map((_, i) => <button key={i} onClick={() => setIdx(i)} style={{ width: 7, height: 7, borderRadius: '50%', border: 'none', background: i === idx ? 'var(--accent-deep)' : '#cfd3c7' }} />)}
