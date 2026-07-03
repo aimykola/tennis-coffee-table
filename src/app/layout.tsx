@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import './globals.css'
 import { CartProvider } from '@/components/cart/CartContext'
+import { FavoritesProvider } from '@/components/favorites/FavoritesContext'
 
 const montserrat = Montserrat({ subsets: ['latin', 'cyrillic'], variable: '--font-sans' })
 
@@ -14,7 +15,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="uk" className={montserrat.variable}>
       <body>
-        <CartProvider>{children}</CartProvider>
+        <CartProvider>
+          <FavoritesProvider>{children}</FavoritesProvider>
+        </CartProvider>
       </body>
     </html>
   )
