@@ -2,7 +2,7 @@ import Header from '@/components/Header'
 import Catalog from '@/components/Catalog'
 import CartDrawer from '@/components/cart/CartDrawer'
 import FavoritesDrawer from '@/components/favorites/FavoritesDrawer'
-import { Hero, Reviews, Footer } from '@/components/Sections'
+import { Hero, FeatureStrip, Footer } from '@/components/Sections'
 import Contacts from '@/components/ContactsSection'
 import FloatingContact from '@/components/FloatingContact'
 
@@ -12,8 +12,8 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <FeatureStrip />
         <Catalog />
-        <Reviews />
         <Contacts />
       </main>
       <Footer />
