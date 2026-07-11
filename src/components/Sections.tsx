@@ -121,8 +121,9 @@ export function Reviews() {
 export function Footer() {
   return (
     <footer style={{ borderTop: '1px solid var(--line)', padding: '44px 0', background: 'var(--bg-soft)' }}>
-      <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: 13 }}>
-        <span className="muted" style={{ letterSpacing: '.04em' }}>© {new Date().getFullYear()} · <span style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '.18em', color: 'var(--accent-deep)' }}>Ballcraft</span></span>
+      <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 14, fontSize: 13 }}>
+        <span className="muted" style={{ letterSpacing: '.04em' }}>© {new Date().getFullYear()}</span>
+        <img src="/logo.png" alt="Ballcraft" style={{ height: 40, width: 'auto', display: 'block' }} />
       </div>
     </footer>
   )
