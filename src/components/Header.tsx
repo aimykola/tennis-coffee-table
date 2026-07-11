@@ -27,7 +27,7 @@ export default function Header() {
   return (
     <header style={{ position: 'sticky', top: 0, zIndex: 40, background: 'rgba(255,255,255,.94)', backdropFilter: 'blur(10px)', borderBottom: '1px solid var(--line)' }}>
       {/* Announcement bar */}
-      <div style={{ background: 'var(--bg-soft)', borderBottom: scrolled ? 'none' : '1px solid var(--line)', textAlign: 'center', fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--muted)', overflow: 'hidden', transition: 'max-height .35s ease, padding .35s ease, opacity .3s ease', maxHeight: scrolled ? 0 : 40, paddingTop: scrolled ? 0 : 7, paddingBottom: scrolled ? 0 : 7, opacity: scrolled ? 0 : 1 }}>
+      <div style={{ background: 'var(--bg-soft)', borderBottom: scrolled ? 'none' : '1px solid var(--line)', textAlign: 'center', fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--muted)', overflow: 'hidden', transition: 'max-height .35s ease, padding .35s ease, opacity .3s ease', maxHeight: scrolled ? 0 : 30, paddingTop: scrolled ? 0 : 4, paddingBottom: scrolled ? 0 : 4, opacity: scrolled ? 0 : 1 }}>
         Безкоштовна доставка · Ручна робота на замовлення
       </div>
       {/* Centered logo row */}
