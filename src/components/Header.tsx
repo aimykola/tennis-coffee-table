@@ -17,9 +17,9 @@ export default function Header() {
       </div>
 
       {/* Centered logo row */}
-      <div className="container" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', height: 92 }}>
+      <div className="container" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', height: 96 }}>
         <Link href="#top" style={{ display: 'flex', alignItems: 'center' }} aria-label="Ballcraft">
-          <img src="/logo.png" alt="Ballcraft" style={{ height: 72, width: 'auto', display: 'block', mixBlendMode: 'multiply' }} />
+          <img src="/logo.png" alt="Ballcraft" style={{ height: 60, width: 'auto', display: 'block' }} />
         </Link>
 
         {/* Right-side icons, absolutely positioned */}
