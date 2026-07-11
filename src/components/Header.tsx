@@ -31,7 +31,7 @@ export default function Header() {
         Безкоштовна доставка · Ручна робота на замовлення
       </div>
       {/* Centered logo row */}
-      <div className="container" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', transition: 'max-height .35s ease, opacity .3s ease', maxHeight: hideLogo ? 0 : 200, opacity: hideLogo ? 0 : 1 }}>
+      <div className="container" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', transition: 'max-height .35s ease, opacity .3s ease', maxHeight: hideLogo ? 0 : 120, opacity: hideLogo ? 0 : 1 }}>
         <Link href="#top" style={{ display: 'flex', alignItems: 'center' }} aria-label="Ballcraft">
           <img src="/logo.png" alt="Ballcraft" style={{ height: 180, width: 'auto', display: 'block' }} />
         </Link>
