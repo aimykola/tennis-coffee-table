@@ -31,9 +31,9 @@ export default function Header() {
         Безкоштовна доставка · Ручна робота на замовлення
       </div>
       {/* Centered logo row */}
-      <div className="container" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', transition: 'max-height .35s ease, opacity .3s ease', maxHeight: hideLogo ? 0 : 104, opacity: hideLogo ? 0 : 1 }}>
+      <div className="container" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', transition: 'max-height .35s ease, opacity .3s ease', maxHeight: hideLogo ? 0 : 128, opacity: hideLogo ? 0 : 1 }}>
         <Link href="#top" style={{ display: 'flex', alignItems: 'center' }} aria-label="Ballcraft">
-          <img src="/logo.png" alt="Ballcraft" style={{ height: 92, width: 'auto', display: 'block' }} />
+          <img src="/logo.png" alt="Ballcraft" style={{ height: 116, width: 'auto', display: 'block' }} />
         </Link>
         <button className="burger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Меню" aria-expanded={menuOpen} style={{ position: 'absolute', right: 0, background: 'none', border: 'none', padding: 8, cursor: 'pointer', color: 'var(--ink)' }}>
           <span style={{ display: 'block', width: 22, height: 1.5, background: 'currentColor' }} />
