@@ -180,10 +180,52 @@ const dict: Record<Lang, Record<string, string>> = {
   },
 }
 
+
+// Translations for dynamic DB-sourced values (product names, colors, sizes).
+const dbdict: Record<string, string> = {
+  'кавові столики, що стають акцентом інтер’єру': 'Coffee tables that become the accent of your interior',
+  'ручна робота, м’яка об’ємна текстура та скляна стільниця.': 'Handmade, soft voluminous texture and a glass tabletop.',
+  'столик круглий': 'Round table',
+  'столик квадратний': 'Square table',
+  'кавовий столик': 'Coffee table',
+  'приставний столик': 'Side table',
+  'стілець': 'Chair',
+  'стіл': 'Table',
+  'стільчик': 'Stool',
+  'білий': 'White',
+  'чорний': 'Black',
+  'рожевий': 'Pink',
+  'розовий': 'Pink',
+  'червоний': 'Red',
+  'синій': 'Blue',
+  'блакитний': 'Light blue',
+  'зелений': 'Green',
+  'класичний': 'Classic',
+  'салатовий': 'Lime',
+  'лаймовий': 'Lime',
+  'жовтий': 'Yellow',
+  'фіолетовий': 'Purple',
+  'сірий': 'Gray',
+  'бежевий': 'Beige',
+  'коричневий': 'Brown',
+  'помаранчевий': 'Orange',
+  'малий': 'Small',
+  'середній': 'Medium',
+  'великий': 'Large',
+}
+
+function translateDb(lang: Lang, text: string | null | undefined): string {
+  const v = (text ?? '').toString()
+  if (lang !== 'en') return v
+  const key = v.trim().toLowerCase()
+  return dbdict[key] || v
+}
+
 type LangCtx = {
   lang: Lang
   setLang: (l: Lang) => void
   t: (key: string) => string
+  td: (text: string | null | undefined) => string
 }
 
 const Ctx = createContext<LangCtx | null>(null)
@@ -201,7 +243,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     try { localStorage.setItem('lang', l) } catch {}
   }
   const t = (key: string) => (dict[lang] && dict[lang][key]) || (dict.uk[key]) || key
-  return <Ctx.Provider value={{ lang, setLang, t }}>{children}</Ctx.Provider>
+  const td = (text: string | null | undefined) => translateDb(lang, text)
+  return <Ctx.Provider value={{ lang, setLang, t, td }}>{children}</Ctx.Provider>
 }
 
 export function useLang() {
