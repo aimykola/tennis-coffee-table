@@ -4,6 +4,7 @@ import { supabase } from '@/lib/supabaseClient'
 import { useLang } from '@/components/LanguageContext'
 
 function TableArt() {
+  const { t } = useLang()
   const balls = Array.from({ length: 15 })
   return (
     <div style={{ position: 'relative', background: 'var(--bg-soft)', borderRadius: 4, padding: 34, minHeight: 300, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid var(--line)' }}>
