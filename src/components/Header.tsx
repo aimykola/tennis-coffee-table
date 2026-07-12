@@ -5,8 +5,8 @@ import { useCart } from '@/components/cart/CartContext'
 import { useFavorites } from '@/components/favorites/FavoritesContext'
 
 export default function Header() {
-  const { open } = useCart()
-  const { open: openFavorites } = useFavorites()
+  const { open, count } = useCart()
+  const { open: openFavorites, count: favCount } = useFavorites()
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [isDesktop, setIsDesktop] = useState(true)
@@ -53,11 +53,13 @@ export default function Header() {
         </Link>
         <button onClick={openFavorites} aria-label="Вподобані" style={{ display: 'flex', alignItems: 'center', position: 'relative', background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: 'inherit' }}>
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+          {favCount > 0 && (<span style={{ position: 'absolute', top: -6, right: -8, minWidth: 16, height: 16, padding: '0 4px', borderRadius: 8, background: 'var(--ink)', color: '#fff', fontSize: 10, fontWeight: 600, lineHeight: '16px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{favCount}</span>)}
           
         </button>
         <button aria-label="Кошик" onClick={open} style={{ display: 'flex', alignItems: 'center', position: 'relative', background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: 'inherit' }}>
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
           
+                  {count > 0 && (<span style={{ position: 'absolute', top: -6, right: -8, minWidth: 16, height: 16, padding: '0 4px', borderRadius: 8, background: 'var(--ink)', color: '#fff', fontSize: 10, fontWeight: 600, lineHeight: '16px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{count}</span>)}
         </button>
       </nav>
       {menuOpen && (
