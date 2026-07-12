@@ -5,8 +5,8 @@ import { useCart } from '@/components/cart/CartContext'
 import { useFavorites } from '@/components/favorites/FavoritesContext'
 
 export default function Header() {
-  const { count, open } = useCart()
-  const { count: favCount, open: openFavorites } = useFavorites()
+  const { open } = useCart()
+  const { open: openFavorites } = useFavorites()
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [isDesktop, setIsDesktop] = useState(true)
@@ -53,11 +53,11 @@ export default function Header() {
         </Link>
         <button onClick={openFavorites} aria-label="Вподобані" style={{ display: 'flex', alignItems: 'center', position: 'relative', background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: 'inherit' }}>
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-5-7 5V4a1 1 0 0 1 1-1z"/></svg>
-          {favCount > 0 && <span style={{ position: 'absolute', top: -6, right: -8, background: 'var(--ink)', color: '#fff', borderRadius: '50%', fontSize: 10, width: 16, height: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 600 }}>{favCount}</span>}
+          
         </button>
         <button aria-label="Кошик" onClick={open} style={{ display: 'flex', alignItems: 'center', position: 'relative', background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: 'inherit' }}>
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 8h14l-1 12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1L5 8z"/><path d="M12 3l3 3M12 3L9 6M12 3v9"/></svg>
-          {count > 0 && <span style={{ position: 'absolute', top: -6, right: -8, background: 'var(--ink)', color: '#fff', borderRadius: '50%', fontSize: 10, width: 16, height: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 600 }}>{count}</span>}
+          
         </button>
       </nav>
       {menuOpen && (
