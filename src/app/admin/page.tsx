@@ -266,6 +266,8 @@ function SettingsTab() {
       {field('telegram', 'Telegram (посилання або @username)')}
       {field('instagram_url', 'Посилання Instagram')}
       {field('instagram_label', 'Підпис кнопки Instagram')}
+      {field('facebook', 'Facebook (посилання)')}
+      {field('tiktok', 'TikTok (посилання)')}
       <button className="btn btn-primary" onClick={save}>Зберегти</button>
       {msg && <p style={{ fontSize: 13, color: 'var(--accent-deep)', fontWeight: 600, marginTop: 8 }}>{msg}</p>}
     </div>
