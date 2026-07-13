@@ -246,6 +246,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     setLangState(l)
     try { localStorage.setItem('lang', l) } catch {}
   }
+  useEffect(() => {
+    try { document.documentElement.lang = lang } catch {}
+  }, [lang])
   const t = (key: string) => (dict[lang] && dict[lang][key]) || (dict.uk[key]) || key
   const td = (text: string | null | undefined) => translateDb(lang, text)
   return <Ctx.Provider value={{ lang, setLang, t, td }}>{children}</Ctx.Provider>
