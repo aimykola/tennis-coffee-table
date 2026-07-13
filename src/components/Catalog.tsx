@@ -136,7 +136,7 @@ export default function Catalog() {
             <label className="fld">{t('f_category')}</label>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
               <button className={'chip' + (category === 'all' ? ' active' : '')} onClick={() => setCategory('all')}>{t('f_all')}</button>
-              {cats.map(c => <button key={c.slug} className={'chip' + (category === c.slug ? ' active' : '')} onClick={() => setCategory(c.slug)}>{c.name}</button>)}
+              {cats.map(c => <button key={c.slug} className={'chip' + (category === c.slug ? ' active' : '')} onClick={() => setCategory(c.slug)}>{td(c.name)}</button>)}
             </div>
           </div>
           <div><label className="fld">{t('f_availability')}</label><select value={availability} onChange={e => setAvailability(e.target.value)} style={{ minWidth: 140 }}><option value="all">{t('f_all')}</option><option value="in">{t('f_instock')}</option><option value="out">{t('f_outstock')}</option></select></div>
