@@ -157,7 +157,7 @@ export function Footer() {
     <footer style={{ borderTop: '1px solid var(--line)', background: 'var(--bg-soft)' }}>
       <div className="container" style={{ padding: '56px 0 32px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 40 }}>
         <div>
-          <img src="/logo.png" alt="Ballcraft" style={{ height: 46, width: 'auto', display: 'block', marginBottom: 18 }} />
+          <img src="/logo.png" alt="Ballcraft" style={{ height: 76, width: 'auto', display: 'block', marginBottom: 18 }} />
           <p className="muted" style={{ fontSize: 13.5, lineHeight: 1.7, maxWidth: 260 }}>{t('footer_about')}</p>
         </div>
         <div>
