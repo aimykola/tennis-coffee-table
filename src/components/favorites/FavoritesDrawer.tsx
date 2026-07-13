@@ -5,7 +5,7 @@ import { priceWithDiscount } from '@/lib/types'
 import { useLang } from '@/components/LanguageContext'
 
 export default function FavoritesDrawer() {
-  const { t } = useLang()
+  const { t, td } = useLang()
   const { items, isOpen, close, remove } = useFavorites()
   const { add } = useCart()
 
@@ -22,7 +22,7 @@ export default function FavoritesDrawer() {
             <div key={p.id} style={{ display: 'flex', gap: 12, marginBottom: 14, paddingBottom: 14, borderBottom: '1px solid var(--line)' }}>
               <div style={{ width: 60, height: 60, borderRadius: 10, background: 'var(--bg-soft)', flexShrink: 0, overflow: 'hidden' }}>{p.image && <img src={p.image} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}</div>
               <div style={{ flex: 1 }}>
-                <div style={{ fontWeight: 700, fontSize: 14 }}>{p.name}</div>
+                <div style={{ fontWeight: 700, fontSize: 14 }}>{td(p.name)}</div>
                 <div style={{ fontWeight: 700, fontSize: 14, marginTop: 4 }}>{priceWithDiscount(p)} ₴</div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 6 }}>
                   <button onClick={() => add(p)} className="btn btn-primary" style={{ padding: '6px 12px', fontSize: 12 }}>{t('add_to_cart')}</button>
