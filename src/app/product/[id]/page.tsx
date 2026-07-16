@@ -80,7 +80,7 @@ export default function ProductPage() {
   return (
     <>
       <Header />
-      <main className="container" style={{ padding: '32px 0 60px', minHeight: '60vh' }}>
+      <main className="container" style={{ padding: '32px 28px 60px', minHeight: '60vh' }}>
         <Link href="/#catalog" style={{ color: 'var(--muted)', textDecoration: 'none', fontSize: 14, display: 'inline-block', marginBottom: 24 }}>{t('back_to_catalog')}</Link>
         {loading ? (
           <p className="muted">{t('loading')}</p>
