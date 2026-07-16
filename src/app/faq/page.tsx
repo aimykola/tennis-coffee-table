@@ -34,7 +34,7 @@ export default function FaqPage() {
   return (
     <>
       <Header />
-      <main className="container" style={{ padding: '48px 0 72px', minHeight: '60vh', maxWidth: 820 }}>
+      <main className="container" style={{ padding: '48px 28px 72px', minHeight: '60vh', maxWidth: 820 }}>
         <Link href="/" style={{ color: 'var(--muted)', textDecoration: 'none', fontSize: 14, display: 'inline-block', marginBottom: 28 }}>{t('back_to_catalog')}</Link>
         <h1 style={{ fontSize: 34, marginBottom: 32, lineHeight: 1.2 }}>{t('page_faq_title')}</h1>
         <div>
