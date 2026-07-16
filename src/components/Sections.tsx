@@ -183,7 +183,7 @@ export function Footer() {
         </div>
       </div>
       <div style={{ borderTop: '1px solid var(--line)' }}>
-        <div className="container" style={{ padding: '22px 0', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 16 }}>
+        <div className="container" style={{ padding: '22px 28px 90px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 16 }}>
           <span className="muted" style={{ fontSize: 12.5, letterSpacing: '.04em' }}>© {new Date().getFullYear()} Ballcraft. {t('footer_rights')}</span>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13 }}>
             <button onClick={() => setLang('uk')} aria-pressed={lang === 'uk'} style={{ background: 'none', border: 'none', padding: '4px 6px', cursor: 'pointer', color: lang === 'uk' ? 'var(--ink)' : 'var(--muted)', fontWeight: lang === 'uk' ? 600 : 400, borderBottom: lang === 'uk' ? '1px solid var(--ink)' : '1px solid transparent', letterSpacing: '.02em' }}>Українська</button>
