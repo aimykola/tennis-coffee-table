@@ -70,7 +70,11 @@ export default function Header() {
             <Link href="/#catalog" className="nav-link" onClick={closeMenu} style={{ padding: '12px 0', fontSize: 15, borderBottom: '1px solid var(--line)' }}>{t('nav_catalog')}</Link>
             <Link href="/#about" className="nav-link" onClick={closeMenu} style={{ padding: '12px 0', fontSize: 15, borderBottom: '1px solid var(--line)' }}>{t('nav_about')}</Link>
             <Link href="/#reviews" className="nav-link" onClick={closeMenu} style={{ padding: '12px 0', fontSize: 15, borderBottom: '1px solid var(--line)' }}>{t('nav_reviews')}</Link>
-            <Link href="/#contacts" className="nav-link" onClick={closeMenu} style={{ padding: '12px 0', fontSize: 15 }}>{t('nav_contacts')}</Link>
+            <Link href="/#contacts" className="nav-link" onClick={closeMenu} style={{ padding: '12px 0', fontSize: 15, borderBottom: '1px solid var(--line)' }}>{t('nav_contacts')}</Link>
+            <Link href="/account" className="nav-link" onClick={closeMenu} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 0', fontSize: 15 }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              {t('aria_account')}
+            </Link>
           </div>
         </div>
       )}
