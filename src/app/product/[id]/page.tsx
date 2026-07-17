@@ -67,6 +67,18 @@ export default function ProductPage() {
   }, [id])
 
   const imgs = p ? (p.images && p.images.length ? p.images : (p.image ? [p.image] : [])) : []
+
+  useEffect(() => {
+    if (!lightbox) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightbox(false)
+      else if (e.key === 'ArrowLeft') setIdx((i) => (i - 1 + imgs.length) % imgs.length)
+      else if (e.key === 'ArrowRight') setIdx((i) => (i + 1) % imgs.length)
+    }
+    window.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = '' }
+  }, [lightbox, imgs.length])
   const hasDisc = p ? Number(p.discount) > 0 : false
   const finalPrice = p ? priceWithDiscount(p) : 0
   const fav = p ? isFavorite(p.id) : false
@@ -91,6 +103,22 @@ export default function ProductPage() {
           </div>
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 44, alignItems: 'start' }}>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Product',
+                name: p.name,
+                description: p.description || undefined,
+                image: imgs,
+                offers: {
+                  '@type': 'Offer',
+                  price: finalPrice,
+                  priceCurrency: 'UAH',
+                  availability: p.in_stock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+                },
+              }) }}
+            />
             <div>
               <div style={{ position: 'relative', aspectRatio: '1 / 1', background: 'var(--bg-soft)', borderRadius: 6, overflow: 'hidden', border: '1px solid var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {imgs[idx] ? <img src={imgs[idx]} alt={td(p.name)} onClick={() => setLightbox(true)} style={{ width: '100%', height: '100%', objectFit: 'cover', cursor: 'zoom-in' }} /> : <span className="muted">{t('no_photo')}</span>}
@@ -100,14 +128,14 @@ export default function ProductPage() {
                 <div style={{ display: 'flex', gap: 10, marginTop: 12, flexWrap: 'wrap' }}>
                   {imgs.map((im, i) => (
                     <button key={i} onClick={() => setIdx(i)} style={{ width: 64, height: 64, borderRadius: 4, overflow: 'hidden', border: i === idx ? '2px solid var(--ink)' : '1px solid var(--line)', padding: 0, cursor: 'pointer', background: 'none' }}>
-                      <img src={im} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <img src={im} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </button>
                   ))}
                 </div>
               )}
             </div>
             <div>
-              <span className="badge" style={{ position: 'static', display: 'inline-block', marginBottom: 12, background: p.in_stock ? 'var(--accent)' : '#e2e4dd', color: '#1c1e18' }}>{p.in_stock ? t('f_instock') : t('f_outstock')}</span>
+              <span className="badge" style={{ position: 'static', display: 'inline-block', marginBottom: 12, background: p.in_stock ? '#c8e04f' : '#e2e4dd', color: '#1c1e18' }}>{p.in_stock ? t('f_instock') : t('f_outstock')}</span>
               <h1 style={{ fontSize: 30, fontWeight: 800, lineHeight: 1.15, marginBottom: 14 }}>{td(p.name)}</h1>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 22 }}>
                 <span style={{ fontSize: 26, fontWeight: 800 }}>{finalPrice} ₴</span>
