@@ -48,9 +48,9 @@ function ProductCard({ p }: { p: Product }) {
   return (
     <div className="card">
       <div style={{ position: 'relative', aspectRatio: '4/3', background: 'var(--bg-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        {imgs[idx] ? <Link href={`/product/${p.id}`} style={{ display: 'block', width: '100%', height: '100%' }}><img src={imgs[idx]} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></Link> : <span className="muted" style={{ fontSize: 13 }}>{t('no_photo')}</span>}
+        {imgs[idx] ? <Link href={`/product/${p.id}`} style={{ display: 'block', width: '100%', height: '100%' }}><img src={imgs[idx]} alt={p.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></Link> : <span className="muted" style={{ fontSize: 13 }}>{t('no_photo')}</span>}
         {hasDisc && <span className="badge" style={{ left: 10, background: '#ff6b6b', color: '#fff' }}>-{p.discount}%</span>}
-        <span className="badge" style={{ right: 10, background: p.in_stock ? 'var(--accent)' : '#e2e4dd', color: '#1c1e18' }}>{p.in_stock ? t('f_instock') : t('f_outstock')}</span>
+        <span className="badge" style={{ right: 10, background: p.in_stock ? '#c8e04f' : '#e2e4dd', color: '#1c1e18' }}>{p.in_stock ? t('f_instock') : t('f_outstock')}</span>
         <button
           onClick={() => toggle(p)}
           aria-label={fav ? t('fav_remove') : t('fav_add')}
